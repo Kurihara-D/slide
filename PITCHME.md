@@ -1,14 +1,14 @@
-# RubyKaigi2019  
-## @福岡  
+## RubyKaigi2019  
+### @福岡  
 
 ---
 
-# Agenda
+## Agenda
 - PatternMatching
 - RubyKaigiについての感想
 
 ---
-# pattern matching is...?
+## pattern matching is...?
 
 - Extend case expression for pattern matching
 
@@ -20,14 +20,14 @@ in [1, [2, a, b]]
 end
 ```
 ---
-# ざっくり特徴
+## ざっくり特徴
 - 多重代入のように見えるが構造をチェックしている
 - 一致するパターンが見つかるまで上から順番に実行される
   - 一致するパターンがない場合はNoMatchingPatternError
 ---
-# 既存の変数をパターンとして扱いたいよね
+## 既存の変数をパターンとして扱いたいよね
 ---
-# こんな感じ？
+## こんな感じ？
 ```ruby
 a = 2
 case 1
@@ -38,7 +38,7 @@ end
 ---
 # #=> 1
 ---
-# Like Elixir
+## Like Elixir
 - use ^
 ```ruby
 a = 2
@@ -49,11 +49,11 @@ end
 #=> NoMatchingPatternError
 ```
 ---
-# ユースケース
+## ユースケース
 - JSONのパターンマッチ
 - ArrayやHashの構造チェック(順番や型もチェックしてくれる)
 ---
-# When JSON
+## JSON
 ```json
 {
   "foo": "bar",
@@ -74,7 +74,7 @@ in {foo: "bar", hoge: [{fuga: 1, weei: var}]}
 end
 ```
 --- 
-# When Array
+## Array
 ```ruby
 case [1, 2, 3]
 in [3, 2, 1]
