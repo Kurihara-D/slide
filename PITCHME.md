@@ -40,6 +40,7 @@ end
 ---
 ## Like Elixir
 - use ^  
+
 ```ruby
 a = 2
 case 1
