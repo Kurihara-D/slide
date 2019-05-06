@@ -47,6 +47,8 @@ in ^a
 end
 #=> NoMatchingPatternError
 ```
+Note:
+- Elixirのパターンマッチングのようにピン演算子を使えばcase内のスコープに入れられます
 ---
 ## ユースケース
 - JSONのパターンマッチ
