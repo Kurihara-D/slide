@@ -39,7 +39,7 @@ end
 # #=> 1
 ---
 ## Like Elixir
-- use ^
+- use ^  
 ```ruby
 a = 2
 case 1
