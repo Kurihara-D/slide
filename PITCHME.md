@@ -20,10 +20,11 @@ in [1, [2, a, b]]
 end
 ```
 ---
-## ざっくり特徴
-- 多重代入のように見えるが構造をチェックしている
+## 特徴
+- 多重代入のように見えるが構造をチェックしていて、
+マッチした際に変数にデータがバインドされる
 - 一致するパターンが見つかるまで上から順番に実行される
-  - 一致するパターンがない場合はNoMatchingPatternError
+- 一致するパターンがない且つelse句がない場合はNoMatchingPatternErrorがraiseされる
 ---
 ## 既存の変数をパターンとして扱いたいよね
 ---
@@ -32,8 +33,9 @@ end
 a = 2
 case 1
 in a
-  puts a #=> ???
+  puts a
 end
+#=> ???
 ```
 ---
 # #=> 1
@@ -51,8 +53,21 @@ Note:
 - Elixirのパターンマッチングのようにピン演算子を使えばcase内のスコープに入れられます
 ---
 ## ユースケース
-- JSONのパターンマッチ
 - ArrayやHashの構造チェック(順番や型もチェックしてくれる)
+- JSONのパターンマッチ
+
+--- 
+## Array
+```rubyは良さげ
+case [1, 2, 3]
+in [3, 2, 1]
+in [2, 3, 1]
+in [1, 3, 2]
+end
+#=> NoMatchingPatternError
+
+```
+
 ---
 ## JSON
 ```json
@@ -74,15 +89,16 @@ in {foo: "bar", hoge: [{fuga: 1, weei: var}]}
   puts var #=> 2
 end
 ```
---- 
-## Array
-```ruby
-case [1, 2, 3]
-in [3, 2, 1]
-in [2, 3, 1]
-in [1, 3, 2]
-end
-#=> NoMatchingPatternError
+---
+### PatternMatchingまとめ
+- APIのレスポンス(Json)を処理する時とか使えそう
+- HashやArrayの構造をチェックした上でそれらの値を扱う場面では簡潔にかける
+- 期待
+---
+### まとめ
+- Rubyのコア部分の話がほぼメイン
+- Rails6で導入されるオートローダー`ZeitWerk`は期待
+- 静的型チェックは賛否両論ある(Stripe社のSorbetは良さげ)
 
-```
-
+Note:
+- Rubyぽくはないよね・・・・
