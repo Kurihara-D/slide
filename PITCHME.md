@@ -72,10 +72,10 @@ end
 ```json
 {
   "foo": "bar",
-  "hoge": [
+  "items": [
     {
-      "fuga": 1,
-      "weei": 2
+      "key1": 1,
+      "key2": 2
     }
   ]
 }
@@ -84,7 +84,7 @@ end
 ```ruby
 json = JSON.parse(json, symbolize_names: true)
 case json
-in {foo: "bar", hoge: [{fuga: 1, weei: var}]}
+in {foo: "bar", items: [{key1: 1, key2: var}]}
   puts var #=> 2
 end
 ```
